@@ -1,5 +1,6 @@
 package com.psachdev.composeplayground
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -59,14 +60,25 @@ fun MessageCard(msg: Message) {
         Column {
             Text(
                 text = msg.author,
-                color = MaterialTheme.colorScheme.secondary
+                color = MaterialTheme.colorScheme.secondary,
+                style = MaterialTheme.typography.titleSmall
             )
             // Add a vertical space between the author and message texts
             Spacer(modifier = Modifier.height(4.dp))
-            Text(text = msg.body)
+            Text(
+                text = msg.body,
+                style = MaterialTheme.typography.bodyMedium
+            )
         }
     }
 }
+
+@Preview(name = "Light Mode")
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = false,
+    name = "Dark Mode"
+)
 
 @Preview(showBackground = true)
 @Composable
